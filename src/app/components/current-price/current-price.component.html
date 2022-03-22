@@ -1,0 +1,46 @@
+<div class="current-price">
+  <div *ngIf="lastUpdated" data-test-id="currentPriceId">
+    <h2>Bitcoin Current Price</h2>
+    <span class="py-5">Last updated: {{ lastUpdated }}</span>
+    <div *ngIf="isAutoUpdating" class="spinner-border float-end" role="status">
+      <span class="visually-hidden">Loading...</span>
+    </div>
+    <div class="pt-5 container">
+      <div class="row">
+        <app-ticker-graph
+          [title]="'Current Price USD'"
+          [series]="usdTicker"
+          class="col-6"
+        >
+        </app-ticker-graph>
+        <app-ticker-graph
+          [title]="'Current Price GBP'"
+          [series]="gbpTicker"
+          class="col-6"
+        >
+        </app-ticker-graph>
+        <app-ticker-graph
+          [title]="'Current Price EUR'"
+          [series]="eurTicker"
+          class="col-6"
+        >
+        </app-ticker-graph>
+      </div>
+    </div>
+  </div>
+</div>
+<button
+  data-test-id="switchAutoUpdateButton"
+  (click)="switchAutoUpdate()"
+  class="btn btn-primary"
+>
+  {{ isAutoUpdating ? "Stop" : "Start" }} Auto Refresh
+</button>
+<button
+  [disabled]="isAutoUpdating"
+  data-test-id="manuallyRefreshButton"
+  (click)="getLatestPrice()"
+  class="ms-2 btn btn-secondary"
+>
+  Manually get latest price
+</button>
