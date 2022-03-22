@@ -17,3 +17,7 @@ Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app w
 ## Running unit tests
 
 Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+
+### This is a Demo App Only
+
+This is a demo app only for using Angular to solve a real-world-problem. Disclaimer: The coinbase API states: "This data was produced from the CoinDesk Bitcoin Price Index (USD). Non-USD currency data converted using hourly conversion rate from openexchangerates.org"
