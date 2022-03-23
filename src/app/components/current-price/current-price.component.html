@@ -1,6 +1,6 @@
 <div class="current-price">
   <div *ngIf="lastUpdated" data-test-id="currentPriceId">
-    <h2>Bitcoin Current Price</h2>
+    <h2 data-test-id="title">{{ title }}</h2>
     <span class="py-5">Last updated: {{ lastUpdated }}</span>
     <div
       *ngIf="isAutoUpdating"

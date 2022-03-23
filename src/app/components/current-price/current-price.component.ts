@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { Subscription, timer } from 'rxjs';
 import { CurrentPrice } from 'src/app/models/current-price';
 import { CurrentPriceService } from 'src/app/services/current-price/current-price.service';
@@ -22,6 +22,9 @@ export class CurrentPriceComponent implements OnInit, OnDestroy {
   usdTicker = new Array<CurrentPrice>();
   gbpTicker = new Array<CurrentPrice>();
   eurTicker = new Array<CurrentPrice>();
+
+  @Input()
+  title!: string;
 
   constructor(private _currentPriceService: CurrentPriceService) {}
 

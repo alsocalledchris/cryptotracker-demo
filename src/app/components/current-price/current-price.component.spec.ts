@@ -32,6 +32,7 @@ describe('CurrentPriceComponent', () => {
     lastUpdated: '2023',
     usdRate: 1.3,
   };
+  const mockTitle = 'test title';
 
   beforeEach(async () => {
     const config = TestBed.configureTestingModule({
@@ -51,13 +52,21 @@ describe('CurrentPriceComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(CurrentPriceComponent);
     component = fixture.componentInstance;
+    component.title = mockTitle;
     fixture.detectChanges();
   });
 
-  it('when first shown the latest price is retrieved and shown', fakeAsync(() => {
+  it('when first shown the latest price is retrieved and shown and the title is populated', fakeAsync(() => {
+    // Arrange
+     let title =
+       fixture.debugElement.nativeElement.querySelector(
+         '[data-test-id="title"]'
+       );
+
     // Assert
     expect(currentPriceServiceMock.get).toHaveBeenCalled();
     expect(component.lastUpdated).toEqual(currentPriceMock.lastUpdated);
+    expect(title.innerHTML).toEqual(mockTitle);
   }));
 
   it('when I click to get prices manually then the lastupdated value should be updated', fakeAsync(() => {

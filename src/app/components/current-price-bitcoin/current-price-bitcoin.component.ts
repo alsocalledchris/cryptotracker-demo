@@ -7,10 +7,14 @@ import { CurrentPriceService } from 'src/app/services/current-price/current-pric
  */
 @Component({
   selector: 'app-current-price-bitcoin',
-  template: '<app-current-price></app-current-price>',
-  providers: [{ provide: CurrentPriceService, useClass: CurrentPriceCoinbaseService }],
+  template: `<app-current-price
+    [title]="'Bitcoin Current Price'"
+  ></app-current-price>`,
+  providers: [
+    { provide: CurrentPriceService, useClass: CurrentPriceCoinbaseService },
+  ],
 })
-export class BitcoinComponent implements OnInit {
+export class CurrentPriceBitcoinComponent implements OnInit {
   constructor() {}
   ngOnInit(): void {}
 }

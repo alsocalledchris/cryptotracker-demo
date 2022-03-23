@@ -1,6 +1,6 @@
 # CryptoTracker Angular Demo App
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.2.6. It uses the free [Coindesk API](https://api.coindesk.com/v1/bpi/currentprice.json) to get the latest Bitcoin price and show in a ticker graph for an example app. It demonstrates the use of HttpClient, Observables, Subscriptions, Routing (although only one route in this example so far), Dependency Injection (e.g. providing the implementation to use for a service per component) and Unit testing with mock data and spying on function calls etc.
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.2.6. It uses the free [Coindesk API](https://api.coindesk.com/v1/bpi/currentprice.json) to get the latest Bitcoin price and show in a ticker graph for an example app. It demonstrates the use of HttpClient, Observables, Subscriptions, Routing, Dependency Injection and Unit testing with mock data and spying on function calls etc.
  
 Graph shown with open source [Apexcharts]( https://apexcharts.com/angular-chart-demos/) library. Leave running with 'auto-refresh' enabled to see a nice line graph drawn and updated every minute.
 
@@ -8,7 +8,7 @@ Graph shown with open source [Apexcharts]( https://apexcharts.com/angular-chart-
 
 ## Purpose
 
-Show the current price of Bitcoin (and eventually other crypto-coins) for USD, EUR and GBP tracking across time. Allow the end user to manually retrieve  (if no new price, then graph is not updated) the price or leave running with auto-update enabled to see the fluctuations updating every minute.
+Show the current price of Bitcoin and a fake crypto coin for USD, EUR and GBP tracking across time. Allows the end user to manually retrieve the price (if no new price, then graph is not updated) or leave running with auto-update enabled to see the fluctuations updating every minute.
 
 ## To get going
 

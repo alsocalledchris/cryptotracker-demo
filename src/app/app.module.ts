@@ -7,16 +7,16 @@ import { AppComponent } from './app.component';
 import { CurrentPriceComponent } from './components/current-price/current-price.component';
 import { NgApexchartsModule } from 'ng-apexcharts';
 import { TickerGraphComponent } from './components/ticker-graph/ticker-graph.component';
-import { BitcoinComponent } from './components/current-price-bitcoin/current-price-bitcoin.component';
-import { CurrentPricesComponent } from './components/current-prices/current-prices.component';
+import { CurrentPriceBitcoinComponent } from './components/current-price-bitcoin/current-price-bitcoin.component';
+import { CurrentPriceFakeCoinComponent } from './components/current-price-fakecoin/current-price-fakecoin.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     CurrentPriceComponent,
     TickerGraphComponent,
-    BitcoinComponent,
-    CurrentPricesComponent,
+    CurrentPriceBitcoinComponent,
+    CurrentPriceFakeCoinComponent
   ],
   imports: [
     BrowserModule,
