@@ -4,22 +4,25 @@ import {
   HttpTestingController,
 } from '@angular/common/http/testing';
 
-import { CoinbaseService } from './coinbase.service';
+import { CurrentPriceCoinbaseService } from './current-price-coinbase.service';
 
 describe('CoinbaseService', () => {
-  let service: CoinbaseService;
+  let service: CurrentPriceCoinbaseService;
   let httpMock: HttpTestingController;
   let injector: TestBed;
 
   beforeEach(() => {
-    TestBed.configureTestingModule({ imports: [HttpClientTestingModule] });
+    TestBed.configureTestingModule({
+      imports: [HttpClientTestingModule],
+      providers: [CurrentPriceCoinbaseService],
+    });
     injector = getTestBed();
-    service = TestBed.inject(CoinbaseService);
+    service = TestBed.inject(CurrentPriceCoinbaseService);
     httpMock = injector.get(HttpTestingController);
   });
 
   afterEach(() => {
-    // Ensure no outstaning requests
+    // Ensure no outstanding requests
     httpMock.verify();
   });
 

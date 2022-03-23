@@ -1,7 +1,11 @@
 import { Observable } from "rxjs";
 import { CurrentPriceResponse } from "../../models/current-price-response";
 
-/// Interface that providers must implement to give us the current price
-export interface ICurrentPriceService {
-  get(): Observable<CurrentPriceResponse>;
+/**
+ * Class that current price providers must implement to give us the current price
+ */
+export class CurrentPriceService {
+  get(): Observable<CurrentPriceResponse> {
+    throw new Error('Class must be implemented')
+  }
 }

@@ -1,20 +1,22 @@
 import { Injectable } from '@angular/core';
 import { catchError, map, Observable, retry, throwError } from 'rxjs';
 import { CurrentPriceResponse } from 'src/app/models/current-price-response';
-import { ICurrentPriceService } from './current-price.service';
+import { CurrentPriceService } from './current-price.service';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
-import { CoinbaseCurrentPriceResponse } from './coinbase-current-price-response';
+import { CurrentPriceCoinbaseBitcoinResponse } from './current-price-coinbase-bitcoin-response';
 
-@Injectable({
-  providedIn: 'root',
-})
-export class CoinbaseService implements ICurrentPriceService {
+
+/**
+ * Service to get the current price of Bitcoins from Coinbase
+ */
+@Injectable()
+export class CurrentPriceCoinbaseService implements CurrentPriceService {
   readonly URL = 'https://api.coindesk.com/v1/bpi/currentprice.json';
 
   constructor(private _httpClient: HttpClient) {}
 
   get(): Observable<CurrentPriceResponse> {
-    return this._httpClient.get<CoinbaseCurrentPriceResponse>(this.URL).pipe(
+    return this._httpClient.get<CurrentPriceCoinbaseBitcoinResponse>(this.URL).pipe(
       retry(3),
       catchError(this.handleError),
       map(

@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { CurrentPriceComponent } from './components/current-price/current-price.component';
+import { CurrentPricesComponent } from './components/current-prices/current-prices.component';
 
-const routes: Routes = [{ path: '', component: CurrentPriceComponent }];
+const routes: Routes = [{ path: '', component: CurrentPricesComponent }];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

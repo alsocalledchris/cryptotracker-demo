@@ -2,7 +2,12 @@
   <div *ngIf="lastUpdated" data-test-id="currentPriceId">
     <h2>Bitcoin Current Price</h2>
     <span class="py-5">Last updated: {{ lastUpdated }}</span>
-    <div *ngIf="isAutoUpdating" class="spinner-border float-end" role="status">
+    <div
+      *ngIf="isAutoUpdating"
+      class="spinner-border float-end"
+      role="status"
+      data-test-id="loadingIndicator"
+    >
       <span class="visually-hidden">Loading...</span>
     </div>
     <div class="pt-5 container">

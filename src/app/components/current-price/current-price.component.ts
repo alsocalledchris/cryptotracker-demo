@@ -1,8 +1,12 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription, timer } from 'rxjs';
 import { CurrentPrice } from 'src/app/models/current-price';
-import { CoinbaseService } from 'src/app/services/current-price/coinbase.service';
+import { CurrentPriceService } from 'src/app/services/current-price/current-price.service';
 
+/**
+ * Displays the current price in multiple currencies via graphs that
+ * can be auto-updated
+ */
 @Component({
   selector: 'app-current-price',
   templateUrl: './current-price.component.html',
@@ -14,15 +18,14 @@ export class CurrentPriceComponent implements OnInit, OnDestroy {
   autoUpdateTicker: Subscription = new Subscription();
   isAutoUpdating = false;
 
-  // Tickers contain map of date vs rate over time
+  // Tickers contain the current price over time
   usdTicker = new Array<CurrentPrice>();
   gbpTicker = new Array<CurrentPrice>();
   eurTicker = new Array<CurrentPrice>();
 
-  constructor(private _currentPriceService: CoinbaseService) {}
+  constructor(private _currentPriceService: CurrentPriceService) {}
 
   ngOnInit(): void {
-    // Setup auto-update and anyways get the latest
     this.setupAutoUpdate();
     this.getLatestPrice();
   }

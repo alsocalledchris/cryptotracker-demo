@@ -8,6 +8,9 @@ import {
 import { CurrentPrice } from 'src/app/models/current-price';
 import { ChartOptions } from './chart-options';
 
+/**
+ * Displays a graph showing the current rate over time
+ */
 @Component({
   selector: 'app-ticker-graph',
   templateUrl: './ticker-graph.component.html',
@@ -24,10 +27,9 @@ export class TickerGraphComponent implements OnInit, OnChanges {
   constructor() {}
 
   ngOnChanges(changes: SimpleChanges): void {
-    // Force redraw the whole graph to ensure both axis are updated
-    // seems to be the only way to interact with this graphing library
-    // in Angular.
-    this.chartOptions = undefined;
+    // In order to redraw the chart with a new x and y
+    // axis we need to reset the chart options with the
+    // new values
     this.chartOptions = this.getChartOptions(
       changes['series'].currentValue,
       this.title
@@ -35,15 +37,15 @@ export class TickerGraphComponent implements OnInit, OnChanges {
   }
 
   ngOnInit(): void {
-    // Example line chart from https://apexcharts.com/angular-chart-demos/line-charts/basic/
     this.chartOptions = this.getChartOptions(this.series, this.title);
   }
 
-  //
   private getChartOptions(
     currentPrice: Array<CurrentPrice>,
     title: string
   ): ChartOptions {
+    // Example line chart from
+    // https://apexcharts.com/angular-chart-demos/line-charts/basic/
     return {
       series: [
         {

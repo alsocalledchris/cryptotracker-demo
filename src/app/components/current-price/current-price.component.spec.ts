@@ -7,16 +7,15 @@ import {
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 
 import { CurrentPriceResponse } from 'src/app/models/current-price-response';
-import { ICurrentPriceService } from 'src/app/services/current-price/current-price.service';
+import { CurrentPriceService } from 'src/app/services/current-price/current-price.service';
 import { CurrentPriceComponent } from './current-price.component';
-import { CoinbaseService } from 'src/app/services/current-price/coinbase.service';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { of } from 'rxjs';
 
 describe('CurrentPriceComponent', () => {
   let component: CurrentPriceComponent;
   let fixture: ComponentFixture<CurrentPriceComponent>;
-  let currentPriceServiceMock: ICurrentPriceService;
+  let currentPriceServiceMock: CurrentPriceService;
 
   const QUERY_FOR_MANUAL_REFRESH_BUTTON =
     '[data-test-id="manuallyRefreshButton"]';
@@ -39,8 +38,9 @@ describe('CurrentPriceComponent', () => {
       declarations: [CurrentPriceComponent],
       imports: [HttpClientTestingModule],
       schemas: [CUSTOM_ELEMENTS_SCHEMA],
+      providers: [CurrentPriceService],
     });
-    currentPriceServiceMock = TestBed.inject(CoinbaseService);
+    currentPriceServiceMock = TestBed.inject(CurrentPriceService);
     spyOn(currentPriceServiceMock, 'get').and.returnValues(
       of(currentPriceMock),
       of(newCurrentPriceMock)
@@ -98,5 +98,26 @@ describe('CurrentPriceComponent', () => {
     // Assert
     expect(manuallyRefreshButton.disabled).toBeTruthy();
     expect(component.isAutoUpdating).toBeTruthy();
+  });
+
+  it('when I click start auto refresh then the loading indicator should be shown', () => {
+    // Arrange
+    let switchAutoUpdateButton =
+      fixture.debugElement.nativeElement.querySelector(
+        '[data-test-id="switchAutoUpdateButton"]'
+      );
+    let loadingIndicator = fixture.debugElement.nativeElement.querySelector(
+      '[data-test-id="loadingIndicator"]'
+    );
+
+    // Initial Assert
+    expect(loadingIndicator).toBeNull();
+
+    // Act
+    switchAutoUpdateButton.click();
+    fixture.detectChanges();
+
+    // Assert
+    expect(loadingIndicator).toBeDefined();
   });
 });

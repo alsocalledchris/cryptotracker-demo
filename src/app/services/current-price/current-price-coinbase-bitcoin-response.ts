@@ -1,4 +1,4 @@
-export interface CoinbaseCurrentPriceResponse {
+export interface CurrentPriceCoinbaseBitcoinResponse {
   time: Time;
   disclaimer: string;
   chartName: string;
